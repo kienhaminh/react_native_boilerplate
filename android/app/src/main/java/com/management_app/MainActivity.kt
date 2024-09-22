@@ -8,9 +8,8 @@ import android.os.Bundle;
 
 class MainActivity : ReactActivity() {
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(null);
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(null)
   }
 
   /**

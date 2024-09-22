@@ -1,20 +1,29 @@
-import {RootNavigation} from '@/navigation/RootNavigation';
-import {clientPersister} from '@/store';
+import {RootNavigation} from './src/navigation/RootNavigation';
+import {clientPersister} from './src/store';
 import {NavigationContainer} from '@react-navigation/native';
-import {QueryClient} from '@tanstack/react-query';
 import {PersistQueryClientProvider} from '@tanstack/react-query-persist-client';
+import {GluestackUIProvider} from '@/components/ui/gluestack-ui-provider';
 import React from 'react';
+import {queryClient} from '@/utils/queryClient';
+import './global.css';
+import {LogBox} from 'react-native';
 
-const queryClient = new QueryClient();
+if (__DEV__) {
+  LogBox.ignoreLogs([
+    'getHost: "Invalid non-string URL" for scriptURL - Falling back to localhost',
+  ]);
+}
 
 function App(): React.JSX.Element {
   return (
     <PersistQueryClientProvider
       persistOptions={{persister: clientPersister}}
       client={queryClient}>
-      <NavigationContainer>
-        <RootNavigation />
-      </NavigationContainer>
+      <GluestackUIProvider>
+        <NavigationContainer>
+          <RootNavigation />
+        </NavigationContainer>
+      </GluestackUIProvider>
     </PersistQueryClientProvider>
   );
 }

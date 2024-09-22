@@ -1,12 +1,23 @@
 import React from 'react';
-import {SafeAreaView} from 'react-native-safe-area-context';
 
 import {Text} from '@/components/ui/text';
+import {Button, ButtonText} from '@/components/ui/button';
+import {Navigation} from '@/constants/navigation';
+import {VStack} from '@/components/ui/vstack';
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
   return (
-    <SafeAreaView>
+    <VStack space="md" reversed={false}>
       <Text>HomeScreen</Text>
-    </SafeAreaView>
+      <Button
+        size="md"
+        variant="solid"
+        action="primary"
+        onPress={() => {
+          navigation.navigate(Navigation.Screens.Main.DETAIL);
+        }}>
+        <ButtonText>Go to detail</ButtonText>
+      </Button>
+    </VStack>
   );
 }

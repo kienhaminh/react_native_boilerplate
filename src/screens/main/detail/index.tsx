@@ -1,12 +1,11 @@
-import React from 'react';
-import {SafeAreaView} from 'react-native-safe-area-context';
-
 import {Text} from '@/components/ui/text';
+import {VStack} from '@/components/ui/vstack';
+import React from 'react';
 
 export default function DetailScreen() {
   return (
-    <SafeAreaView>
+    <VStack>
       <Text>DetailScreen</Text>
-    </SafeAreaView>
+    </VStack>
   );
 }
